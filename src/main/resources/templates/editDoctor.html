@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Doctor</title>
+<link rel="stylesheet" type="text/css" th:href="@{styles.css}" />
+</head>
+<style>
+header { /* width 100% so với wrapper (wrapper là thẻ cha) */
+	height: 70px;
+	width: 80%;
+	background-color: cyan; /* màu nền */
+	text-align: center;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.container {
+	height: 270px;
+	width: 80%;
+	background-color: #f2f2f2;
+	margin: auto;
+	text-align: center;
+}
+
+h2 {
+	display: inline-block;
+}
+</style>
+<body>
+		<header>
+			<h2>Quản lí Bác sĩ</h2>
+		</header>
+		<div class="container">
+			<div align="center">
+				<h2>Cập nhật thông tin</h2>
+				<form method="post" th:action="@{/save}" th:object="${doctor}">
+					<table>
+					<tr>
+						 <td>ID:</td>
+        				 <td th:text="*{id}">Id:</td>
+        				 <td><input type="hidden" th:field="*{id}" /></td>
+      				</tr>
+					<tr>
+						<td>Name:</td>
+						<td><input type="text" th:field="*{name}" /></td>
+					</tr>
+					<tr>
+						<td>Address:</td>
+						<td><input type="text" th:field="*{address}" /></td>
+					</tr>
+					<tr>
+						<td>Phone:</td>
+						<td><input type="text" th:field="*{phone}" /></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input type="text" th:field="*{email}" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="Save"></td>
+					</tr>
+				</table>
+				</form>
+			</div>
+
+		</div>
+</body>
+</html>

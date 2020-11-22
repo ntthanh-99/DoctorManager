@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List Doctor</title>
+</head>
+<style>
+header { /* width 100% so với wrapper (wrapper là thẻ cha) */
+	height: 70px;
+	width: 80%;
+	background-color: cyan; /* màu nền */
+	text-align: center;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.container {
+	height: 270px;
+	width: 80%;
+	background-color: #f2f2f2;
+	margin: auto;
+	text-align: center;
+}
+
+h2 {
+	display: inline-block;
+}
+</style>
+<body>
+	<div style="">
+		<header>
+			<h2>Quản lí Bác sĩ</h2>
+		</header>
+		<div class="container">
+			<form method="get" action="search">
+				<input type="text" name="keyword" /> &nbsp; <input type="submit"
+					value="Search" />
+			</form>
+			<h3>
+				<a href="/new">Thêm mới Bác Sĩ</a>
+			</h3>
+			<table border="1" cellpadding="5" align="center">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Phone</th>
+					<th>E-mail</th>
+					<th>Action</th>
+				</tr>
+
+				<tr th:each="doctor : ${listDoctor}">
+					<td th:text="${doctor.id}"></td>
+					<td th:text="${doctor.name}"></td>
+					<td th:text="${doctor.address}"></td>
+					<td th:text="${doctor.phone}"></td>
+					<td th:text="${doctor.email}"></td>
+					<td><a th:href="@{/edit(id=${doctor.id})}">Edit</a>
+						&nbsp;&nbsp;&nbsp; <a th:href="@{/delete(id=${doctor.id})}">Delete</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
